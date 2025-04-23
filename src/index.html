@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileSwift2</title>
+    <link href="../dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body class="bg-base-100 text-base-content">
+    <!-- Audio elements for notifications -->
+    <audio id="connectSound" src="sounds/connect.mp3" preload="auto"></audio>
+    <audio id="transferSound" src="sounds/transfer.mp3" preload="auto"></audio>
+    <audio id="disconnectSound" src="sounds/disconnect.mp3" preload="auto"></audio>
+    <div class="titlebar h-8 bg-base-300 flex justify-between items-center px-4" style="-webkit-app-region: drag">
+        <div class="text-sm font-semibold">FileSwift2</div>
+        <div class="window-controls flex gap-2" style="-webkit-app-region: no-drag">
+            <button class="minimize-btn hover:text-primary">🗕</button>
+            <button class="maximize-btn hover:text-primary">🗖</button>
+            <button class="close-btn hover:text-error">✕</button>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-8">
+        <!-- Connection Section -->
+        <div class="mb-8 flex justify-center gap-4">
+            <button id="createRoomBtn" class="btn btn-primary">Create Room 🏠</button>
+            <div class="divider divider-horizontal">OR</div>
+            <div class="join">
+                <input id="roomIdInput" class="input input-bordered join-item" placeholder="Enter Room ID">
+                <button id="joinRoomBtn" class="btn btn-primary join-item">Join Room 🔗</button>
+            </div>
+        </div>
+
+        <!-- Room Info -->
+        <div id="roomInfo" class="text-center mb-8 hidden">
+            <div class="stats bg-primary text-primary-content">
+                <div class="stat">
+                    <div class="stat-title">Room ID</div>
+                    <div id="roomIdDisplay" class="stat-value text-2xl break-all"></div>
+                    <div class="stat-actions">
+                        <button id="copyRoomId" class="btn btn-sm">Copy 📋</button>
+                    </div>
+                </div>
+            </div>
+            <div id="qrCode" class="mt-4"></div>
+        </div>
+
+        <!-- Connection Status -->
+        <div id="connectionStatus" class="alert mb-8 hidden">
+            <span id="statusMessage"></span>
+        </div>
+        <div class="text-center mb-8 animate__animated animate__fadeIn">
+            <h1 class="text-4xl font-bold mb-4">FileSwift2 🚀</h1>
+            <p class="text-xl">Fast and Secure File Transfer</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-8">
+            <!-- Send Section -->
+            <div class="card bg-base-200 shadow-xl animate__animated animate__fadeInLeft">
+                <div class="card-body">
+                    <h2 class="card-title">Send Files 📤</h2>
+                    <div id="dropZone" class="border-2 border-dashed border-primary rounded-lg p-8 text-center hover:bg-base-300 transition-all">
+                        <p>Drag & Drop Files Here</p>
+                        <p>or</p>
+                        <button id="selectFiles" class="btn btn-primary mt-4">Select Files</button>
+                    </div>
+                    <div id="selectedFiles" class="mt-4"></div>
+                </div>
+            </div>
+
+            <!-- Receive Section -->
+            <div class="card bg-base-200 shadow-xl animate__animated animate__fadeInRight">
+                <div class="card-body">
+                    <h2 class="card-title">Receive Files 📥</h2>
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Save Location</span>
+                        </label>
+                        <div class="flex gap-4">
+                            <input type="text" id="savePath" class="input input-bordered flex-1" readonly>
+                            <button id="selectSavePath" class="btn btn-primary">Browse</button>
+                        </div>
+                    </div>
+                    <div id="transferProgress" class="mt-4 hidden">
+                        <progress class="progress progress-primary w-full" value="0" max="100"></progress>
+                        <p id="transferStatus" class="text-center mt-2"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./renderer.js"></script>
+</body>
+</html>
