@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FileSwift2</title>
-    <link href="../dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/output.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f0f9ff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
-<body class="bg-base-100 text-base-content">
-    <!-- Audio elements for notifications -->
-    <audio id="connectSound" src="sounds/connect.mp3" preload="auto"></audio>
-    <audio id="transferSound" src="sounds/transfer.mp3" preload="auto"></audio>
-    <audio id="disconnectSound" src="sounds/disconnect.mp3" preload="auto"></audio>
-    <div class="titlebar h-8 bg-base-300 flex justify-between items-center px-4" style="-webkit-app-region: drag">
-        <div class="text-sm font-semibold">FileSwift2</div>
-        <div class="window-controls flex gap-2" style="-webkit-app-region: no-drag">
-            <button class="minimize-btn hover:text-primary">🗕</button>
-            <button class="maximize-btn hover:text-primary">🗖</button>
-            <button class="close-btn hover:text-error">✕</button>
+<body>
+    <div class="container">
+        <h1 class="text-4xl font-bold mb-8 text-center flex items-center justify-center gap-2">
+            FileSwift2 <span class="text-3xl">🚀</span>
+        </h1>
+        <!-- Audio elements for notifications -->
+        <audio id="connectSound" src="sounds/connect.mp3" preload="auto"></audio>
+        <audio id="transferSound" src="sounds/transfer.mp3" preload="auto"></audio>
+        <audio id="disconnectSound" src="sounds/disconnect.mp3" preload="auto"></audio>
+        <div class="titlebar h-8 bg-base-300 flex justify-between items-center px-4" style="-webkit-app-region: drag">
+            <div class="text-sm font-semibold">FileSwift2</div>
+            <div class="window-controls flex gap-2" style="-webkit-app-region: no-drag">
+                <button class="minimize-btn hover:text-primary">🗕</button>
+                <button class="maximize-btn hover:text-primary">🗖</button>
+                <button class="close-btn hover:text-error">✕</button>
+            </div>
         </div>
-    </div>
 
-    <div class="container mx-auto p-8">
-        <!-- Connection Section -->
         <div class="mb-8 flex justify-center gap-4">
             <button id="createRoomBtn" class="btn btn-primary">Create Room 🏠</button>
             <div class="divider divider-horizontal">OR</div>
